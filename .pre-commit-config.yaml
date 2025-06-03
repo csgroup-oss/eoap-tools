@@ -36,6 +36,16 @@ repos:
         args: [--rev-range, HEAD]
         stages: [pre-push]
 
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+    - id: hadolint-docker
+      args: [
+        "--failure-threshold=warning",
+        "--ignore=DL3008", # Pin versions in apt-get install
+        "--ignore=DL3013", # Pin versions in pip
+      ]
+
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: "v0.24.1"
     hooks:
