@@ -1,0 +1,77 @@
+# EOAP Tools
+
+<!-- --8<-- [start:badges] -->
+
+[![Language](https://img.shields.io/badge/language-python≥3.12-3776ab?style=flat-square)](https://www.python.org/)
+![License](https://img.shields.io/badge/license-Apache--2.0-yellow?style=flat-square)
+[![Documentation](https://img.shields.io/badge/documentation-Material%20for%20MkDdocs-0a507a?style=flat-square)](https://csgroup-oss.github.io/eoap-tools/)
+![Style](https://img.shields.io/badge/style-ruff-9a9a9a?style=flat-square)
+![Lint](https://img.shields.io/badge/lint-ruff,%20mypy-brightgreen?style=flat-square)
+![Security](https://img.shields.io/badge/security-bandit,%20pip--audit-purple?style=flat-square)
+[![PyPI - Version](https://img.shields.io/pypi/v/eoap-tools?style=flat-square)](https://pypi.org/project/eoap-tools/)
+[![Tests](https://img.shields.io/github/actions/workflow/status/csgroup-oss/eoap-tools/check.yml?branch=main&label=Test)](https://github.com/csgroup-oss/eoap-tools/actions/workflows/check.yml)
+[![Coverage](https://raw.githubusercontent.com/csgroup-oss/eoap-tools/refs/heads/gh-tests-coverages/data/main/badge.svg)](https://github.com/csgroup-oss/eoap-tools/actions/workflows/check.yml)
+
+[Pull Request](https://github.com/csgroup-oss/eoap-tools/pulls) **·**
+[Bug Report](https://github.com/csgroup-oss/eoap-tools/issues/new?template=bug_report.md) **·**
+[Feature Request](https://github.com/csgroup-oss/eoap-tools/issues/new?template=feature_request.md)
+
+<!-- --8<-- [end:badges] -->
+
+<!-- --8<-- [start:introduction] -->
+
+Summary of the package purpose.
+
+<!-- --8<-- [end:introduction] -->
+
+## Table of Contents
+
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+## Getting started
+
+### Installation
+
+Install `eoap-tools` with pip:
+
+```bash
+pip install eoap-tools
+```
+
+Install `eoap-tools` with pip from source:
+
+```bash
+pip install git+https://github.com/csgroup-oss/eoap-tools.git
+# pip install git+https://github.com/csgroup-oss/eoap-tools.git@<tag>
+```
+
+### Usage
+
+<!-- --8<-- [start:usage] -->
+
+Describe the usage of your package.
+
+<!-- --8<-- [end:usage] -->
+
+## Contributing
+
+If you want to contribute to this project please check [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Everyone contributing to this project is expected to treat other people with respect,
+and more generally to follow the guidelines articulated by our [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## License
+
+Copyright &copy; 2025, CS GROUP - FRANCE
+
+EOAP Tools is licensed under the Apache-2.0 license. A copy of this license is provided in the [LICENSE](./LICENSE) file.
+
+## Acknowledgements
+
+This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
+from the project template [CGuichard/cookiecutter-pypackage](https://github.com/CGuichard/cookiecutter-pypackage).
