@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling >= 1.27.0", "hatch-vcs >= 0.4.0"]
+requires = ["hatchling >= 1.27.0"]
 build-backend = "hatchling.build"
 
 # -----------------------------------------------
@@ -8,6 +8,7 @@ build-backend = "hatchling.build"
 [project]
 name = "eoap_tools"
 description = "Earth Observation Application Package tools for CWL files"
+version = "0.0.0"
 authors = [
     { name = "CS GROUP - FRANCE" },
 ]
@@ -44,7 +45,6 @@ dependencies = [
     "click~=8.1",
     "rich~=14.0",
 ]
-dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/csgroup-oss/eoap-tools"
@@ -85,13 +85,6 @@ test = [
 
 [tool.hatch.build]
 skip-excluded-dirs = true
-
-[tool.hatch.version]
-source = "vcs"
-fallback-version = "0.0.0"
-
-[tool.hatch.version.raw-options]
-version_scheme = "python-simplified-semver"
 
 # -----------------------------------------------
 # Linters
@@ -203,7 +196,7 @@ exclude_lines = [
 # Others
 
 [tool.commitizen]
-version_provider = "scm"
+version_provider = "pep621"
 annotated_tag = true
 changelog_incremental = true
 change_type_order = ["Features", "Bug fixes", "Perf", "Internal"]
