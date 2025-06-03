@@ -14,14 +14,25 @@
 
 """Command-line interface."""
 
+import logging
+import sys
 from importlib.metadata import metadata
+from pathlib import Path
 
 import click
+
+from eoap_tools.stac import download_assets, generate_catalog
+
+logger = logging.getLogger(__name__)
 
 
 @click.group()
 def main() -> None:
     """EOAP Tools CLI."""
+    logging.basicConfig(
+        format="[%(asctime)s] %(levelname)s: %(message)s",
+        level=logging.INFO,
+    )
 
 
 @main.command()
@@ -33,3 +44,51 @@ def version() -> None:
     pkg_summary = m["Summary"]
     print(f"{pkg_name}: {pkg_version}")
     print(pkg_summary)
+
+
+@main.group()
+def stac() -> None:
+    """STAC utilities."""
+
+
+@stac.command("download-assets")
+@click.argument("stac_input")
+@click.option(
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, dir_okay=True, writable=True, path_type=Path),
+)
+def stac_download_assets(stac_input: str, output_path: Path | None) -> None:
+    """Download STAC item assets to output."""
+    if not output_path:
+        output_path = Path("stac-assets")
+    if output_path.exists():
+        logger.error("output path already exists")
+        sys.exit(-1)
+
+    logger.info("downloading %s at: %s", stac_input, output_path)
+    download_assets(stac_input, output_path)
+
+
+@stac.command("generate-catalog")
+@click.argument(
+    "assets_path",
+    type=click.Path(
+        exists=True, file_okay=False, dir_okay=True, readable=True, path_type=Path
+    ),
+)
+@click.option(
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, dir_okay=True, writable=True, path_type=Path),
+)
+def stac_generate_catalog(assets_path: Path, output_path: Path | None) -> None:
+    """Generate STAC catalog from directory of assets to output."""
+    if not output_path:
+        output_path = Path("stac-catalog")
+    if output_path.exists():
+        logger.error("output path already exists")
+        sys.exit(-1)
+
+    logger.info("cataloging directory %s at: %s", assets_path, output_path)
+    generate_catalog(assets_path, output_path)
