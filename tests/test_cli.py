@@ -10,8 +10,8 @@ runner = CliRunner()
 
 
 def test_cli() -> None:
-    """Running CLI without argument print help."""
-    result = runner.invoke(main)
+    """Running CLI with --help print help."""
+    result = runner.invoke(main, ["--help"])
     assert result.exit_code == 0
     assert result.stdout.startswith("Usage:")
 

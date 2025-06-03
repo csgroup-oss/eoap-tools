@@ -32,7 +32,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "click~=8.1",
+    "click~=8.2",
 ]
 
 [project.urls]
