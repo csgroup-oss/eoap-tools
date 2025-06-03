@@ -24,33 +24,10 @@ jobs:
           name: py-dist
           path: dist/
 
-  # publish-pypi:
-  #   name: Publish to PyPI
-  #   needs: [build]
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: testpypi
-  #     url: https://test.pypi.org/p/eoap-tools
-  #     # name: pypi
-  #     # url: https://pypi.org/p/eoap-tools
-  #   permissions:
-  #     id-token: write # IMPORTANT: mandatory for trusted publishing
-  #   steps:
-  #     - name: Download distribution artifacts
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: py-dist
-  #         path: dist/
-  #     - name: Publish distribution package
-  #       uses: pypa/gh-action-pypi-publish@release/v1
-  #       with:
-  #         repository-url: https://test.pypi.org/legacy/
-
   gh-release:
     name: GitHub Release
     runs-on: ubuntu-latest
     needs: [build]
-    # needs: [build, publish-pypi]
     permissions:
       contents: write # IMPORTANT: mandatory for making GitHub Releases
       id-token: write # IMPORTANT: mandatory for sigstore

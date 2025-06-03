@@ -5,7 +5,6 @@
 ![Style](https://img.shields.io/badge/style-ruff-9a9a9a?style=flat-square)
 ![Lint](https://img.shields.io/badge/lint-ruff,%20mypy-brightgreen?style=flat-square)
 ![Security](https://img.shields.io/badge/security-bandit,%20pip--audit-purple?style=flat-square)
-[![PyPI - Version](https://img.shields.io/pypi/v/eoap-tools?style=flat-square)](https://pypi.org/project/eoap-tools/)
 [![Tests](https://img.shields.io/github/actions/workflow/status/csgroup-oss/eoap-tools/check.yml?branch=main&label=Test)](https://github.com/csgroup-oss/eoap-tools/actions/workflows/check.yml)
 [![Coverage](https://raw.githubusercontent.com/csgroup-oss/eoap-tools/refs/heads/gh-tests-coverages/data/main/badge.svg)](https://github.com/csgroup-oss/eoap-tools/actions/workflows/check.yml)
 
