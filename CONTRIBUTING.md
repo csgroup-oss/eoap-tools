@@ -216,8 +216,7 @@ We shall always aim for the highest code coverage in our tests, and our
 development environment should use tools that will help us ensure it.
 
 The test frameworks used are unittest and pytest, run with tox. Thanks
-to pytest-cov, code coverage is evaluated and fails under 80% of test
-coverage.
+to pytest-cov, code coverage is evaluated.
 
 Run the tests with:
 
