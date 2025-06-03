@@ -8,9 +8,12 @@ TOX=$(UV) run tox -qq
 PRE_COMMIT=$(UV) run pre-commit
 COMMITIZEN=$(UV) run cz
 
+IMAGE=$(shell basename $(PWD))
+TAG=latest
+
 .PHONY: default help pipeline setup clean pre-commit pre-commit-install
 .PHONY: release shell build install install-dev install-all
-.PHONY: lint lint-watch test test-report
+.PHONY: lint lint-watch test test-report docker
 
 # ======================================================= #
 
@@ -63,6 +66,9 @@ test-report: ## Start http server to serve the test report and coverage.
 	@printf "Test report: http://localhost:9000\n"
 	@printf "Coverage report: http://localhost:9000/coverage-html\n"
 	@$(PYTHON) -m http.server -b 0.0.0.0 -d tests-reports 9000 > /dev/null
+
+docker: ## Build docker image.
+	@docker build . -t $(IMAGE):$(TAG)
 
 # ======================================================= #
 
