@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 # Package infos
 
 [project]
-name = "eoap_tools"
+name = "eoap-tools"
 description = "Earth Observation Application Package tools for CWL files"
 version = "0.0.0"
 authors = [
@@ -15,19 +15,10 @@ authors = [
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
-keywords = [
-    "python",
-    "package",
-    "cli",
-]
+keywords = ["eoap", "cwl", "stac"]
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Environment :: Console",
-    "Framework :: Hatch",
-    "Framework :: MkDocs",
-    "Framework :: Pytest",
-    "Framework :: tox",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
