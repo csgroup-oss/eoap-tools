@@ -30,7 +30,6 @@ to make an approved contribution. Don't hesitate to share some new ideas to impr
     - [Quality Assurance](#quality-assurance)
       - [Lint](#lint)
       - [Tests](#tests)
-      - [Documentation](#documentation)
       - [Security](#security)
     - [Release](#release)
   - [Git](#git)
@@ -224,34 +223,6 @@ Run the tests with:
 
 ```bash
 make test
-```
-
-##### Documentation
-
-Doing features is great, but it is useless if nobody knows how to use
-them. Keeping a clean, up-to-date documentation is of high priority.
-
-This project is documented with [MkDocs](https://www.mkdocs.org/).
-The documentation source can be found in the `docs/src` folder.
-
-You can build the docs with:
-
-```bash
-make docs
-```
-
-If you want to build the docs, and serve it with an http server after
-the build:
-
-```bash
-make docs-serve
-```
-
-When writing the docs, use the live server to automatically rebuild the
-docs.
-
-```bash
-make docs-live
 ```
 
 ##### Security

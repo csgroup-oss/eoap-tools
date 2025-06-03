@@ -1,10 +1,7 @@
 # EOAP Tools
 
-<!-- --8<-- [start:badges] -->
-
 [![Language](https://img.shields.io/badge/language-python≥3.12-3776ab?style=flat-square)](https://www.python.org/)
 ![License](https://img.shields.io/badge/license-Apache--2.0-yellow?style=flat-square)
-[![Documentation](https://img.shields.io/badge/documentation-Material%20for%20MkDdocs-0a507a?style=flat-square)](https://csgroup-oss.github.io/eoap-tools/)
 ![Style](https://img.shields.io/badge/style-ruff-9a9a9a?style=flat-square)
 ![Lint](https://img.shields.io/badge/lint-ruff,%20mypy-brightgreen?style=flat-square)
 ![Security](https://img.shields.io/badge/security-bandit,%20pip--audit-purple?style=flat-square)
@@ -16,47 +13,7 @@
 [Bug Report](https://github.com/csgroup-oss/eoap-tools/issues/new?template=bug_report.md) **·**
 [Feature Request](https://github.com/csgroup-oss/eoap-tools/issues/new?template=feature_request.md)
 
-<!-- --8<-- [end:badges] -->
-
-<!-- --8<-- [start:introduction] -->
-
-Summary of the package purpose.
-
-<!-- --8<-- [end:introduction] -->
-
-## Table of Contents
-
-- [Getting started](#getting-started)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-
-## Getting started
-
-### Installation
-
-Install `eoap-tools` with pip:
-
-```bash
-pip install eoap-tools
-```
-
-Install `eoap-tools` with pip from source:
-
-```bash
-pip install git+https://github.com/csgroup-oss/eoap-tools.git
-# pip install git+https://github.com/csgroup-oss/eoap-tools.git@<tag>
-```
-
-### Usage
-
-<!-- --8<-- [start:usage] -->
-
-Describe the usage of your package.
-
-<!-- --8<-- [end:usage] -->
+Earth Observation Application Package tooling for CWL files.
 
 ## Contributing
 

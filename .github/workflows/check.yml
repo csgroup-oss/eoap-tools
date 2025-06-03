@@ -49,20 +49,6 @@ jobs:
           name: py-dist
           path: dist/
 
-  build-docs:
-    name: Build documentation
-    runs-on: ubuntu-latest
-    needs: [git-scan]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
-        with:
-          version: ">=0.6.0"
-          enable-cache: true
-          cache-dependency-glob: "**/pyproject.toml"
-      - name: Build docs with tox
-        run: uvx --with tox-uv tox -e docs
-
   audit:
     name: Audit dependencies
     runs-on: ubuntu-latest
