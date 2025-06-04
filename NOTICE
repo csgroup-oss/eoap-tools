@@ -7,6 +7,16 @@ This software includes code from many other open source projects. See below for 
 about the license of each project.
 
 ================================================================
+The Apache 2.0 License
+================================================================
+
+The following components are provided under the Apache 2.0 License (https://opensource.org/licenses/Apache-2.0).
+See project link for details.
+
+- pystac: https://github.com/stac-utils/pystac
+- requests: https://github.com/psf/requests
+
+================================================================
 The BSD-3-Clause License
 ================================================================
 
