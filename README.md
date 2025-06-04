@@ -14,6 +14,41 @@
 
 Earth Observation Application Package tooling for CWL files.
 
+The tool `eoap-tools` is a command-line interface designed to simplify the steps needed
+when writing an [EOAP](https://eoap.github.io/) workflow.
+
+## Usage
+
+Global commands:
+
+```sh
+Usage: eoap-tools [OPTIONS] COMMAND [ARGS]...
+
+  EOAP Tools CLI.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  stac     STAC utilities.
+  version  Print version and exit.
+```
+
+STAC utilities:
+
+```sh
+Usage: eoap-tools stac [OPTIONS] COMMAND [ARGS]...
+
+  STAC utilities.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  download-assets   Download STAC item assets to output.
+  generate-catalog  Generate STAC catalog from directory of assets to output.
+```
+
 ## Contributing
 
 If you want to contribute to this project please check [CONTRIBUTING.md](CONTRIBUTING.md).
