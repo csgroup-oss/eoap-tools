@@ -18,6 +18,6 @@ import urllib.parse
 
 
 def is_url(href: str) -> bool:
-    """Returns True if `ref` is an URL, False otherwise."""
+    """Returns True if `href` is an URL, False otherwise."""
     parsed_url = urllib.parse.urlparse(href)
     return bool(parsed_url.scheme.startswith("http") and parsed_url.netloc)
