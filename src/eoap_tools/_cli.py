@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 def main() -> None:
     """EOAP Tools CLI."""
     logging.basicConfig(
-        format="[%(asctime)s] %(levelname)s: %(message)s",
+        format="[%(asctime)s] [%(levelname)s]\t%(message)s",
         level=logging.INFO,
     )
 
