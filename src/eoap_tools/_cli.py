@@ -65,6 +65,7 @@ def stac() -> None:
     "--output",
     "output_path",
     type=click.Path(file_okay=False, dir_okay=True, writable=True, path_type=Path),
+    help="Path to the directory where the assets will be downloaded.",
 )
 def stac_download_assets(stac_input: str, output_path: Path | None) -> None:
     """Download STAC item assets to output."""
@@ -89,6 +90,7 @@ def stac_download_assets(stac_input: str, output_path: Path | None) -> None:
     "--output",
     "output_path",
     type=click.Path(file_okay=False, dir_okay=True, writable=True, path_type=Path),
+    help="Path to the directory where the catalog will be generated.",
 )
 def stac_generate_catalog(assets_path: Path, output_path: Path | None) -> None:
     """Generate STAC catalog from directory of assets to output."""
