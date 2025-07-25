@@ -27,11 +27,13 @@ Usage: eoap-tools [OPTIONS] COMMAND [ARGS]...
   EOAP Tools CLI.
 
 Options:
-  --help  Show this message and exit.
+  -v, --verbose  Set log level to DEBUG.
+  --help         Show this message and exit.
 
 Commands:
-  stac     STAC utilities.
-  version  Print version and exit.
+  sharinghub  SharingHub utilities.
+  stac        STAC utilities.
+  version     Print version and exit.
 ```
 
 STAC utilities:
@@ -45,9 +47,33 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  download-assets   Download STAC item assets to output.
   generate-catalog  Generate STAC catalog from directory of assets to output.
+  prepare-assets    Prepare STAC item assets to output.
 ```
+
+SharingHub utilities:
+
+```sh
+Usage: eoap-tools sharinghub [OPTIONS] COMMAND [ARGS]...
+
+  SharingHub utilities.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  download-dataset  Download SharingHub dataset from repository URL.
+```
+
+## Environment variables
+
+| Scope | Name | Description | Values |
+|---|---|---|---|
+| Global | `DEBUG` | Enable verbose logging. | `true`, `false` |
+| sharinghub.download-dataset | `USER`, `EOAP_TOOLS__USER` | Git clone username. | string |
+| sharinghub.download-dataset | `ACCESS_TOKEN`, `EOAP_TOOLS__ACCESS_TOKEN` | Git clone token.<br>DVC `password` credential for HTTP remotes. | string |
+| sharinghub.download-dataset | `ACCESS_KEY_ID`, `AWS_ACCESS_KEY_ID`, `EOAP_TOOLS__ACCESS_KEY_ID` | DVC `access_key_id` credential for S3 remotes.` | string |
+| sharinghub.download-dataset | `SECRET_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `EOAP_TOOLS__SECRET_ACCESS_KEY` | DVC `secret_access_key` credential for S3 remotes. | string |
 
 ## Contributing
 
