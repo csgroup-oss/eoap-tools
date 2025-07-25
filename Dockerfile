@@ -17,16 +17,15 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends mailcap && \
+    apt-get install -y --no-install-recommends git mailcap && \
+    groupadd -g 1000 app && \
+    useradd -mr -d /home/app -s /bin/bash -u 1000 -g 1000 app && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=installer /wheels /wheels
 
 RUN pip install --no-cache-dir /wheels/* && \
     rm -rf /wheels
-
-RUN groupadd -g 1000 app && \
-    useradd -mr -d /home/app -s /bin/bash -u 1000 -g 1000 app
 
 USER app
 

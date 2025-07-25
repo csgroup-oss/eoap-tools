@@ -21,3 +21,10 @@ def is_url(href: str) -> bool:
     """Returns True if `href` is an URL, False otherwise."""
     parsed_url = urllib.parse.urlparse(href)
     return bool(parsed_url.scheme.startswith("http") and parsed_url.netloc)
+
+
+def url_basic_auth(url: str, user: str, password: str) -> str:
+    """Add bare basic auth user/password authentication in URL."""
+    parsed_url = list(urllib.parse.urlparse(url))
+    parsed_url[1] = f"{user}:{password}@{parsed_url[1]}"
+    return urllib.parse.urlunparse(parsed_url)

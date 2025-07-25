@@ -32,7 +32,9 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
+    "GitPython~=3.1",
     "click~=8.2",
+    "dvc[s3]~=3.61",
     "pystac~=1.13",
     "requests~=2.32",
 ]
@@ -86,6 +88,7 @@ skip-excluded-dirs = true
 strict = true
 show_error_context = true
 show_column_numbers = true
+ignore_missing_imports = true
 pretty = true
 exclude = ["scripts", "tests"]
 
@@ -121,7 +124,7 @@ select = [
     "S", "SIM", "SLF", "SLOT", "T10", "T20", "TC", "TD", "TID", "YTT",
 ]
 ignore = [
-    "D105", "D107", "D203", "D213", "D417",
+    "D105", "D107", "D203", "D213", "D417", "TRY400",
     # Formatter compatibility (https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules)
     "W191", "E111", "E114", "E117", "D206", "D300", "Q000", "Q001", "Q002", "Q003",
     "COM812", "COM819", "ISC001", "ISC002",

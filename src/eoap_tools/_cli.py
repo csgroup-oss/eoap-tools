@@ -22,6 +22,7 @@ from pathlib import Path
 
 import click
 
+from eoap_tools.sharinghub import configure_dvc, download_repository
 from eoap_tools.stac import generate_catalog, prepare_assets
 
 logger = logging.getLogger(__name__)
@@ -102,3 +103,107 @@ def stac_generate_catalog(assets_path: Path, output_path: Path | None) -> None:
 
     logger.info("cataloging directory %s at: %s", assets_path, output_path)
     generate_catalog(assets_path, output_path)
+
+
+@main.group()
+def sharinghub() -> None:
+    """SharingHub utilities."""
+
+
+@sharinghub.command("download-dataset")
+@click.argument("DATASET_URL")
+@click.option(
+    "--pull",
+    is_flag=True,
+    help="Pull with DVC.",
+)
+@click.option(
+    "--version",
+    metavar="REVISION",
+    help="Version of the dataset (Git revision).",
+)
+@click.option(
+    "--user",
+    metavar="USERNAME",
+    help="Username used to download the repository.",
+)
+@click.option(
+    "--access-token",
+    metavar="TOKEN",
+    help=(
+        "Access token used to download the repository. "
+        "Also used for DVC if the dataset uses SharingHub store API."
+    ),
+)
+@click.option(
+    "--access-key-id",
+    metavar="TOKEN",
+    help="Access Key ID for DVC S3 configuration.",
+)
+@click.option(
+    "--secret-access-key",
+    metavar="TOKEN",
+    help="Secret Access Key for DVC S3 configuration.",
+)
+@click.option(
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, dir_okay=True, writable=True, path_type=Path),
+    help="Path to the directory where the dataset will be downloaded.",
+)
+def sharinghub_download_dataset(  # noqa: PLR0913
+    dataset_url: str,
+    pull: bool,
+    version: str | None,
+    user: str | None,
+    access_token: str | None,
+    access_key_id: str | None,
+    secret_access_key: str | None,
+    output_path: Path | None,
+) -> None:
+    """Download SharingHub dataset from repository URL."""
+    logger.info("dataset url: %s", dataset_url)
+
+    user = os.environ.get("USER", user)
+    user = os.environ.get("EOAP_TOOLS__USER", user)
+    access_token = os.environ.get("ACCESS_TOKEN", access_token)
+    access_token = os.environ.get("EOAP_TOOLS__ACCESS_TOKEN", access_token)
+    access_key_id = os.environ.get("ACCESS_KEY_ID", access_key_id)
+    access_key_id = os.environ.get("AWS_ACCESS_KEY_ID", access_key_id)
+    access_key_id = os.environ.get("EOAP_TOOLS__ACCESS_KEY_ID", access_key_id)
+    access_key_id = access_key_id or access_token
+    secret_access_key = os.environ.get("SECRET_ACCESS_KEY", secret_access_key)
+    secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY", secret_access_key)
+    secret_access_key = os.environ.get("EOAP_TOOLS__SECRET_ACCESS_KEY", secret_access_key)
+    secret_access_key = secret_access_key or access_token
+    logger.debug("git user: %s", user)
+    logger.debug("git access token: %s", access_token)
+    logger.debug("access key id: %s", access_key_id)
+    logger.debug("secret access key: %s", secret_access_key)
+
+    git_repo = download_repository(
+        url=dataset_url,
+        path=output_path,
+        user=user,
+        token=access_token,
+    )
+    git_repo_path = Path(git_repo.working_dir)
+    logger.info("repository: %s", git_repo_path)
+
+    if version:
+        logger.info("checkout repository revision: %s", version)
+        git_repo.git.checkout(version)
+
+    dvc_repo = configure_dvc(
+        git_repo,
+        password=access_token,
+        s3_access_key_id=access_key_id,
+        s3_secret_access_key=secret_access_key,
+    )
+    if not dvc_repo:
+        logger.warning("invalid dvc repository: %s", git_repo.working_dir)
+        sys.exit(0)
+
+    if pull:
+        logger.info("dvc pull...")
+        dvc_repo.pull(force=True)
