@@ -32,8 +32,8 @@ from eoap_tools.utils import is_url
 logger = logging.getLogger(__name__)
 
 
-def download_assets(stac_input: str, output_path: Path) -> None:
-    """Download STAC input assets to `output_path`."""
+def prepare_assets(stac_input: str, output_path: Path) -> None:
+    """Prepare STAC input assets in `output_path`."""
     if is_url(stac_input):
         logger.info("remote STAC item: %s", stac_input)
         stac_item = cast("pystac.Item", pystac.read_file(stac_input))

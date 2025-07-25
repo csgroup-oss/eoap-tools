@@ -22,7 +22,7 @@ from pathlib import Path
 
 import click
 
-from eoap_tools.stac import download_assets, generate_catalog
+from eoap_tools.stac import generate_catalog, prepare_assets
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +59,7 @@ def stac() -> None:
     """STAC utilities."""
 
 
-@stac.command("download-assets")
+@stac.command("prepare-assets")
 @click.argument("stac_input")
 @click.option(
     "--output",
@@ -67,16 +67,16 @@ def stac() -> None:
     type=click.Path(file_okay=False, dir_okay=True, writable=True, path_type=Path),
     help="Path to the directory where the assets will be downloaded.",
 )
-def stac_download_assets(stac_input: str, output_path: Path | None) -> None:
-    """Download STAC item assets to output."""
+def stac_prepare_assets(stac_input: str, output_path: Path | None) -> None:
+    """Prepare STAC item assets to output."""
     if not output_path:
         output_path = Path("stac-assets")
     if output_path.exists():
         logger.error("output path already exists")
         sys.exit(-1)
 
-    logger.info("downloading %s at: %s", stac_input, output_path)
-    download_assets(stac_input, output_path)
+    logger.info("preparing %s at: %s", stac_input, output_path)
+    prepare_assets(stac_input, output_path)
 
 
 @stac.command("generate-catalog")
