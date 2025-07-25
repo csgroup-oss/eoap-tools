@@ -15,6 +15,7 @@
 """Command-line interface."""
 
 import logging
+import os
 import sys
 from importlib.metadata import metadata
 from pathlib import Path
@@ -27,11 +28,18 @@ logger = logging.getLogger(__name__)
 
 
 @click.group()
-def main() -> None:
+@click.option(
+    "-v",
+    "--verbose",
+    is_flag=True,
+    help="Set log level to DEBUG.",
+)
+def main(verbose: bool) -> None:
     """EOAP Tools CLI."""
+    debug = verbose or (os.environ.get("DEBUG", "false").lower() in ["1", "true"])
     logging.basicConfig(
         format="[%(asctime)s] [%(levelname)s]\t%(message)s",
-        level=logging.INFO,
+        level=logging.DEBUG if debug else logging.INFO,
     )
 
 
