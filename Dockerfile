@@ -31,4 +31,7 @@ USER app
 
 WORKDIR /home/app
 
+# Patch env for DVC
+ENV USER=app
+
 CMD ["eoap-tools"]
