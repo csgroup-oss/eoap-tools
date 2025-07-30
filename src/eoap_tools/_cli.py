@@ -164,18 +164,25 @@ def sharinghub_download_dataset(  # noqa: PLR0913
     """Download SharingHub dataset from repository URL."""
     logger.info("dataset url: %s", dataset_url)
 
-    user = os.environ.get("USER", user)
-    user = os.environ.get("EOAP_TOOLS__USER", user)
-    access_token = os.environ.get("ACCESS_TOKEN", access_token)
-    access_token = os.environ.get("EOAP_TOOLS__ACCESS_TOKEN", access_token)
-    access_key_id = os.environ.get("ACCESS_KEY_ID", access_key_id)
-    access_key_id = os.environ.get("AWS_ACCESS_KEY_ID", access_key_id)
-    access_key_id = os.environ.get("EOAP_TOOLS__ACCESS_KEY_ID", access_key_id)
-    access_key_id = access_key_id or access_token
-    secret_access_key = os.environ.get("SECRET_ACCESS_KEY", secret_access_key)
-    secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY", secret_access_key)
-    secret_access_key = os.environ.get("EOAP_TOOLS__SECRET_ACCESS_KEY", secret_access_key)
-    secret_access_key = secret_access_key or access_token
+    if not user:
+        user = os.environ.get("USER")
+        user = os.environ.get("EOAP_TOOLS__USER", user)
+    if not access_token:
+        access_token = os.environ.get("ACCESS_TOKEN")
+        access_token = os.environ.get("EOAP_TOOLS__ACCESS_TOKEN", access_token)
+    if not access_key_id:
+        access_key_id = os.environ.get("ACCESS_KEY_ID")
+        access_key_id = os.environ.get("AWS_ACCESS_KEY_ID", access_key_id)
+        access_key_id = os.environ.get("EOAP_TOOLS__ACCESS_KEY_ID", access_key_id)
+        access_key_id = access_key_id or access_token
+    if not secret_access_key:
+        secret_access_key = os.environ.get("SECRET_ACCESS_KEY")
+        secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY", secret_access_key)
+        secret_access_key = os.environ.get(
+            "EOAP_TOOLS__SECRET_ACCESS_KEY", secret_access_key
+        )
+        secret_access_key = secret_access_key or access_token
+
     logger.debug("git user: %s", user)
     logger.debug("git access token: %s", access_token)
     logger.debug("access key id: %s", access_key_id)
