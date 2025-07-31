@@ -13,6 +13,7 @@ The Apache 2.0 License
 The following components are provided under the Apache 2.0 License (https://opensource.org/licenses/Apache-2.0).
 See project link for details.
 
+- dvc: https://github.com/iterative/dvc
 - pystac: https://github.com/stac-utils/pystac
 - requests: https://github.com/psf/requests
 
@@ -24,3 +25,4 @@ The following components are provided under the BSD-3-Clause License (https://op
 See project link for details.
 
 - click: https://github.com/pallets/click
+- GitPython: https://github.com/gitpython-developers/GitPython
