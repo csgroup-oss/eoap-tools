@@ -13,7 +13,8 @@ authors = [
     { name = "CS GROUP - FRANCE" },
 ]
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.12"
 keywords = ["eoap", "cwl", "stac"]
 classifiers = [
@@ -39,40 +40,40 @@ dependencies = [
     "requests~=2.32",
 ]
 
+[project.scripts]
+eoap-tools = "eoap_tools._cli:main"
+
 [project.urls]
 "Homepage" = "https://github.com/csgroup-oss/eoap-tools"
 "Source" = "https://github.com/csgroup-oss/eoap-tools"
 "Bug Tracker" = "https://github.com/csgroup-oss/eoap-tools/issues"
-
-[project.scripts]
-eoap-tools = "eoap_tools._cli:main"
 
 # -----------------------------------------------
 # Development dependencies
 
 [dependency-groups]
 dev = [
-    "build~=1.2",
-    "commitizen==4.6.0",
-    "pre-commit~=4.2",
+    "build~=1.3",
+    "commitizen==4.9.1",
+    "pre-commit~=4.3",
     "pre-commit-uv",
-    "rich~=14.0", # Script watch.py
-    "tox~=4.25",
+    "rich~=14.1", # Script watch.py
+    "tox~=4.30",
     "tox-uv",
     "watchdog~=6.0", # Script watch.py
 ]
 lint = [
-    "mypy==1.15",
-    "ruff==0.11.7",
+    "mypy==1.17",
+    "ruff==0.13.0",
     # Types
     "types-requests",
 ]
 test = [
-    "pytest-cov~=6.1",
+    "pytest-cov~=7.0",
     "pytest-html~=4.1",
-    "pytest-randomly~=3.16", # Randomize testing order
-    "pytest-sugar~=1.0", # Better output
-    "pytest~=8.3",
+    "pytest-randomly~=4.0", # Randomize testing order
+    "pytest-sugar~=1.1", # Better output
+    "pytest~=8.4",
 ]
 
 # -----------------------------------------------
@@ -131,8 +132,8 @@ ignore = [
 ]
 
 [tool.ruff.lint.extend-per-file-ignores]
-"_cli.py" = ["T201"]
-"tests/**" = ["ANN201", "ARG001", "INP001", "PLR0913", "S101"]
+"src/*/_cli.py" = ["T201"]
+"tests/**" = ["ANN201", "ARG001", "INP001", "PLR0913", "PLR2004", "S101"]
 
 [tool.ruff.lint.flake8-annotations]
 allow-star-arg-any = true
@@ -150,7 +151,6 @@ convention = "google"
 minversion = "8.0"
 required_plugins = [
     "pytest-cov",
-    "pytest-html",
 ]
 testpaths = [
     "src",
@@ -158,24 +158,17 @@ testpaths = [
 ]
 addopts = [
     "--doctest-modules",
-    "--junit-xml=tests-reports/junit-report.xml",
     # pytest-cov
     "--cov=src",
     "--cov-config=pyproject.toml",
     "--cov-report=term-missing",
-    "--cov-report=html:tests-reports/coverage-html",
-    "--cov-report=xml:tests-reports/coverage.xml",
-    # pytest-html
-    "--html=tests-reports/index.html",
-    "--self-contained-html",
 ]
 
 [tool.coverage.run]
 branch = true
 parallel = true
-data_file = "tests-reports/coverage"
 omit = [
-    "*/__main__.py",
+    "src/*/__main__.py",
     "tests/*",
 ]
 
@@ -194,6 +187,7 @@ exclude_lines = [
 
 [tool.commitizen]
 version_provider = "pep621"
+version_scheme = "pep440"
 annotated_tag = true
 changelog_incremental = true
 change_type_order = ["Features", "Bug fixes", "Perf", "Internal"]

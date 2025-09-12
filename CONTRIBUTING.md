@@ -44,7 +44,7 @@ We recommend a Linux-based distribution. You will need the following tools on yo
   in the project life-cycle.
 - [Python](https://www.python.org/) (≥3.12): language of the project,
   you'll need the interpreter.
-- [uv](https://docs.astral.sh/uv/) (≥0.5.0): package and project manager for Python.
+- [uv](https://docs.astral.sh/uv/) (≥0.8.0): package and project manager for Python.
 
 ### Clone the repository
 
@@ -88,10 +88,12 @@ on how to reproduce it must be provided, and if possible visuals
 (screenshots) are welcome.
 
 Open a [Bug Report](https://github.com/csgroup-oss/eoap-tools/issues/new?template=bug_report.md)
-for issues that you encountered.
+for issues that you encountered, if it's not already present in the issue tracker.
 
-Before submitting a new issue please check for existing issues, your question or bug may
-already be reported.
+Before Submitting an Issue:
+
+- **Check Existing Issues**: Your question or bug may already be reported.
+- **Search the Documentation**: Ensure the answer isn’t already covered.
 
 #### Suggesting Enhancements
 
@@ -234,12 +236,6 @@ moments of the Git workflow, with [Git Hooks](https://git-scm.com/docs/githooks)
 It will mostly run linting and formatting tools on the source code in our case.
 Some tools will also run for yaml, json, or markdown files etc... The commitizen
 tool will also enforce conventional commit usage.
-
-To activate our Git Hooks, please run the following commands:
-
-```bash
-make pre-commit-install
-```
 
 Our hooks needs the following dependencies:
 

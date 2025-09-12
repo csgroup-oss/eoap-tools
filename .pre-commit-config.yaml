@@ -7,7 +7,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: "v5.0.0"
+    rev: "v6.0.0"
     hooks:
       - id: check-added-large-files
       - id: check-ast
@@ -29,7 +29,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: "v4.6.0"
+    rev: "v4.9.1"
     hooks:
       - id: commitizen
       - id: commitizen-branch
@@ -66,4 +66,4 @@ repos:
         files: "^(src|tests)"
         types_or: [python, pyi]
         pass_filenames: false
-        additional_dependencies: ["tox~=4.25", "tox-uv"]
+        additional_dependencies: ["tox~=4.30", "tox-uv"]
