@@ -79,7 +79,7 @@ jobs:
         run: |
           echo "## libyear" >> SUMMARY.md
           echo "\`\`\`txt" >> SUMMARY.md
-          uvx --quiet libyear --sort -r requirements.txt &>> SUMMARY.md
+          uvx --python 3.10 --quiet libyear --sort -r requirements.txt &>> SUMMARY.md
           echo "\`\`\`" >> SUMMARY.md
       - name: Job summary
         run: cat SUMMARY.md >> $GITHUB_STEP_SUMMARY
