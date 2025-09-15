@@ -134,7 +134,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tests-reports-py${{ matrix.python-version }}
-          path: tests-reports
+          path: tests-reports/py*
 
   test-report:
     name: Test report
