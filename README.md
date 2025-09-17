@@ -19,6 +19,12 @@ when writing an [EOAP](https://eoap.github.io/) workflow.
 
 ## Usage
 
+EOAP Tools offers a [command line interface](#command-line-interface) useful in EOAP CWL.
+
+You can find for each commands a corresponding CommandLineTool under `examples/`.
+
+## Command Line Interface
+
 Global commands:
 
 ```sh
