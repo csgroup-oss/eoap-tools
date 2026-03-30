@@ -1,4 +1,4 @@
-# Copyright 2025, CS GROUP - France, https://www.csgroup.eu/
+# Copyright 2026, CS GROUP - France, https://www.csgroup.eu/
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
